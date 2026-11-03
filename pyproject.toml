@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nutanix-crewai-assistant"
+version = "0.1.0"
+description = "CrewAI assistant for Nutanix operations with persistent memory and MD knowledge base"
+requires-python = ">=3.11,<3.14"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "crewai[litellm]>=1.14.3,<2.0.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+nx-assistant = "nx_assistant.main:main"
+nx-assistant-ask = "nx_assistant.main:ask"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nx_assistant"]
